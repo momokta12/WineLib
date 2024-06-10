@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Toy App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="app">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="toy in toys">
+                    <td>{{ toy.id }}</td>
+                    <td>{{ toy.name }}</td>
+                    <td>{{ toy.description }}</td>
+                    <td><button @click="deleteToy(toy.id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <input v-model="newToy.id" placeholder="Enter id">
+            <input v-model="newToy.name" placeholder="Enter name">
+            <input v-model="newToy.description" placeholder="Enter description">
+            <button @click="createToy()">Create</button>
+        </div>
+        <div>
+            <input v-model="searchId" placeholder="Enter id to search">
+            <button @click="searchToy()">Search</button>
+            <div v-if="searchResult">
+                <p>ID: {{ searchResult.id }}</p>
+                <p>Name: {{ searchResult.name }}</p>
+                <p>Description: {{ searchResult.description }}</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
